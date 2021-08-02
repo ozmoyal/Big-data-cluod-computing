@@ -1,5 +1,8 @@
+:man_technologist: This project made by  @yonatan555 @meirozenfeld @ozmoyal
+
 ## Welcome to our Big-data-cloud project!
 In this project we designed a system that gets a stream of data stores and process it in typical architectures templates and uses common big data infrastructure for analyze in rapid and adaptive manner.
+
 
 
 
@@ -27,3 +30,8 @@ The goal of this project is to design a dashboard analitic system in big data pe
  - the system is using 2 NoSQL based databases: Redis and MongoDB - the first will save updated Ad hoc data that available for rapid queries and the second for processed and long-term data
  - the system is using distributed event streaming platform Kafka from Hadoop family (https://www.cloudkarafka.com/)
  - for the predication model we used BigML.com
+ 
+ 
+ ![127867905-de2e4fe7-0dcb-4d45-92e8-a20a942ab508](https://user-images.githubusercontent.com/57761478/127868793-88ffa9d7-fed7-4d66-a2d3-8f5d50f836f4.png)
+
+ 
