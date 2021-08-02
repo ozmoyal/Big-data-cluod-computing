@@ -6,8 +6,7 @@ In this project we designed a system that gets a stream of data stores and proce
 
 
 
-**Goal**
-
+**Goal**<br>
 The goal of this project is to design a dashboard analitic system in big data perception which uses NoSQL Databases, tools from Hadoop Ecosystem and microservices in typical architecture and implementing infrastructure challenges.
 
 ## Functional requirements
