@@ -1,8 +1,9 @@
 // https://www.cloudkarafka.com/ הפעלת קפקא במסגרת ספק זה
 const uuid = require("uuid");
 const Kafka = require("node-rdkafka");
-const forRedis = require("./RedisForArielSender");
+const forRedis = require("./RedisForSender");
 const forMongo = require("./MongoDBSender");
+const bigml = require("./bigML");
 const { log } = require("mathjs");
 const kafkaConf = {
   "group.id": "cloudkarafka-example",
@@ -14,7 +15,6 @@ const kafkaConf = {
   "sasl.password": "MkmoKnhRZ_DTIzFGh46CyvsHdrFyoAAQ",
   "debug": "generic,broker,security"
 };
-const bigml = require("./bigML");
 
 const prefix = "gzeps78o-";
 const topic = `${prefix}new`; // send to this topic
@@ -38,20 +38,15 @@ consumer.on("ready", function (arg) {
 
   consumer.consume();
 });
+var EnterCars = 0 ; 
 consumer.on("data", function (m) 
 {
   var m_json = JSON.parse(m.value.toString());
   forRedis.addToRedis( m.value.toString());
-  var delayInMilliseconds = 150; //0.15 second
-  setTimeout(function() {
-    forMongo.addToMongoDB( m.value.toString());
-  }, delayInMilliseconds);
-  
-  var delayInMilliseconds = 10000; //
-  setTimeout(function() {
-    bigml.myPrediction(m.value.toString())
-  }, delayInMilliseconds);
-
+  forMongo.addToMongoDB( m.value.toString());
+  bigml.myPrediction(m_json)
+  EnterCars++
+  module.exports.enter_cars = EnterCars ;
 });
 consumer.on("disconnected", function (arg) {
   process.exit();

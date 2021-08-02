@@ -9,5 +9,3 @@ function createCSV(data) {
     console.log("Write pred.csv successfully!");
   });
 }
-
-

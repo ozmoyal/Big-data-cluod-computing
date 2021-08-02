@@ -4,11 +4,17 @@
       <%=title %>
     </h5>
     <h5 class="font-weight-light pb-2 mb-1 border-bottom">
+      <% if (titletwo === 7) { %>
+        <%=total_exit_cars%> Cars     
+    <% } else if (titletwo === 6) { %>
+      <%=entered_cars%> Cars     
+      <% } else { %>
       <%=num_cars[titletwo] %> cars
+    <% } %>
     </h5>
-    <!-- <p class="tx-12 text-muted">click here for more details</p> -->
+    <!-- <p class="tx-12 text-muted">click here for more details</p> --> 
     <div class="card-icon-wrapper">
-      <i class="material-icons">dvr</i>
-    </div>
+      <img src="images/dashboard/road.jpeg"/>
+      </div>
   </div>
 </div>

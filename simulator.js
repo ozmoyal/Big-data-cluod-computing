@@ -1,11 +1,8 @@
 module.exports.sim = (publish) => {
-
-    const event_types_arr = ["Enter road", "Enter section", "Exit road", "Exit section"];
     const car_types_arr = ["Private", "Van", "Truck"];
     const days_arr = ["Sunday", "Monday", "Tuesday", "Wendsday", "Thursday", "Friday", "Saturday"];
     var i = 0;
     setInterval(function () {
-        var temp_event = event_types_arr[Math.floor(Math.random() * 4)];
         var temp_sec_enter = Math.floor(Math.random() * 5) + 1;
         var temp_sec_exit = Math.floor(Math.random() * 5) + 1;
         var temp_car = car_types_arr[Math.floor(Math.random() * 3)];
@@ -21,6 +18,7 @@ module.exports.sim = (publish) => {
         }
         console.log(i)
         var myRandom = Math.random()
+   
         if ((temp_day == 'Sunday' || temp_day == 'Monday' || temp_day == 'Tuesday') && (temp_car == 'Van')) {
             if (myRandom < 0.8) {
                 temp_sec_exit = 1
@@ -51,36 +49,41 @@ module.exports.sim = (publish) => {
                 temp_sec_exit = 1
             }
         }
+
         if (temp_day == 'Saturday' && parseInt(getHour) >= 12) {
-            temp_sec_exit = 5
+            if (myRandom < 0.8) {
+                temp_sec_exit = 5
+            }
         }
 
         if (temp_day == 'Saturday' && parseInt(getHour) <= 12) {
-            temp_sec_exit = 1
+            if (myRandom < 0.8) {
+                temp_sec_exit = 1
+            }
         }
         if (temp_sec_enter == 1) {
-            if (myRandom < 0.7) {
+            if (myRandom < 0.8) {
                 temp_sec_exit = 2
             }
-        } if (temp_sec_enter == 3) {
-            if (myRandom < 0.7) {
-                temp_sec_exit = 4
-            }
         } if (temp_sec_enter == 2) {
-            if (myRandom < 0.7) {
+            if (myRandom < 0.8) {
                 temp_sec_exit = 3
             }
+        }
+        if (temp_sec_enter == 3) {
+            if (myRandom < 0.8) {
+                temp_sec_exit = 4
+            }
         } if (temp_sec_enter == 5) {
-            if (myRandom < 0.7) {
+            if (myRandom < 0.8) {
                 temp_sec_exit = 1
             }
         } if (temp_sec_enter == 4) {
-            if (myRandom < 0.7) {
+            if (myRandom < 0.8) {
                 temp_sec_exit = 5
             }
         }
         var e = {};
-        e.event_type = temp_event;
         e.enter_section = temp_sec_enter;
         e.car_type = temp_car;
         e.day = temp_day;
@@ -89,5 +92,5 @@ module.exports.sim = (publish) => {
         e.exit_section = temp_sec_exit;
         i++
         publish(e);
-    }, 1950);
+    }, 1000);
 }

@@ -16,130 +16,101 @@
   <!-- End plugin css for this page -->
   <!-- Layout styles -->
   <link rel="stylesheet" href="./css/demo/style.css">
+  <link rel="stylesheet" href="./css/demo/buttonStyle.css">
+
   <!-- End layout styles -->
   <link rel="shortcut icon" href="./images/favicon.png" />
   <script type="text/JavaScript">
-    <!--
        function AutoRefresh( t ) {
           setTimeout("location.reload(true);", t);
        }
-    //-->
  </script>
 </head>
+<!-- <body onload="JavaScript:AutoRefresh(15000);"> -->
 
-<body onload="JavaScript:AutoRefresh(15000);">
-  <script src="./js/preloader.js"></script>
-  <div class="body-wrapper">
-    <!-- partial -->
-    <div class="main-wrapper mdc-drawer-app-content">
-      <div class="page-wrapper mdc-toolbar-fixed-adjust">
-        <main class="content-wrapper">
-          <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-              <% cards.forEach(function(card,numOfCars) { %>
-                <div
-                  class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
-                  <%- include ('../partials/Cards.ejs',{title:card,titletwo:numOfCars} ) %>
-                </div>
-                <% }); %>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
-            <div class="mdc-card">
-              <div class="d-flex justify-content-between align-items-center">
-                <h4 class="card-title mb-2 mb-sm-0">Confusion Matrix</h4>
+<script src="./js/preloader.js"></script>
+<svg xmlns="http://www.w3.org/2000/svg" >
+  
+  <!-- filterUnits is required to prevent clipping the blur outside the viewBox -->
+  
+    <filter id="motion-blur-filter" filterUnits="userSpaceOnUse">
+      
+      <!-- We only want horizontal blurring. x: 100, y: 0 -->
+      
+        <feGaussianBlur class="center"stdDeviation="100 0"></feGaussianBlur>
+    </filter>
+</svg>
 
-                <div class="d-flex justtify-content-between align-items-center">
-                </div>
-                <%= mongoRec.mongoReciver()%>
+<!-- We use a custom attribute to set the text that the pseudo element should display and blur. In this case, we use the first character of the word. -->
+
+<span filter-content="S" class="center">CARS SIMULATION PROJECT</span>
+  
+<img src="images/dashboard/cars1.png"/ class="center">
+<div class="body-wrapper">
+  <!-- partial -->
+  <div class="main-wrapper mdc-drawer-app-content">
+    <div class="page-wrapper mdc-toolbar-fixed-adjust">
+      <main class="content-wrapper">
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <% cards.forEach(function(card,numOfCars) { %>
+              <div
+                class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
+                <%- include ('../partials/Cards.ejs',{title:card,titletwo:numOfCars} ) %>
               </div>
-
-              <div class="d-block d-sm-flex justify-content-between align-items-center">
-                <div class="mdc-tab-wrapper revenue-tab mdc-tab--secondary">
-                  <div class="mdc-tab-bar" role="tablist">
-                    <div class="mdc-tab-scroller">
-                      <div class="mdc-tab-scroller__scroll-area">
-                        <div class="mdc-tab-scroller__scroll-content">
-                        </div>
+              <% }); %>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
+          <div class="mdc-card">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="card-title mb-2 mb-sm-0">Confusion Matrix</h4>
+              <h4 class="card-title mb-2 mb-sm-0">Accuracy: <%= num %>% </h4>
+              <div class="d-flex justtify-content-between align-items-center">
+              </div>
+            </div>
+            <div class="d-block d-sm-flex justify-content-between align-items-center">
+              <div class="mdc-tab-wrapper revenue-tab mdc-tab--secondary">
+                <div class="mdc-tab-bar" role="tablist">
+                  <div class="mdc-tab-scroller">
+                    <div class="mdc-tab-scroller__scroll-area">
+                      <div class="mdc-tab-scroller__scroll-content">
                       </div>
                     </div>
                   </div>
-                  <div class="content content--active">
-                  </div>
-                  <div class="content">
-                  </div>
-                  <div class="content">
-                  </div>
-                  <div class="content">
-                  </div>
-                  <div class="content">
-                  </div>
+                </div>
+                <div class="content content--active">
+                </div>
+                <div class="content">
+                </div>
+                <div class="content">
+                </div>
+                <div class="content">
+                </div>
+                <div class="content">
                 </div>
               </div>
-              <br></br>
-              <div class="my_design">
-                <table id="customers">
-                  <tr>
-                    <th></th>
-                    <th>Section 1</th>
-                    <th>Section 2</th>
-                    <th>Section 3</th>
-                    <th>Section 4</th>
-                    <th>Section 5</th>
-                  </tr>
-                  <tr>
-                    <th>Section 1 predicted</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
+            </div>
+            <br></br>
+            <div class="my_design">
+              <%- include ('../partials/tableML.ejs' ,{matrix:matrix}) %>
+            </div>
+            <br></br>
 
-                  <tr>
-                    <th>Section 2 predicted</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  <tr>
-                    <th>Section 3 predicted</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  <tr>
-                    <th>Section 4 predicted</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  <tr>
-                    <th>Section 5 predicted</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </table>
-              </div>
-
-              <br></br>
-              <h4 class="card-title mb-2 mb-sm-0">Car details in each sections</h4>
-              <br></br>
+            <div id="button-container">
+              <button onclick="show_tables()" class="button">
+                <div class="pattern">
+                  <div class="target inner bg4"></div>
+                </div>
+                <div class="text">Click here for more car details in each section</div>
+              </button>
+            </div>
+            <div id="tablesDiv" style="display: none;">
               <h2 class="card-title mb-2 mb-sm-0">SECTION 1</h2>
               <div class="table-wrapper-scroll-y my-custom-scrollbar">
                 <table id="carTable1" class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" style="text-align: center;">Event</th>
                       <th scope="col">Car type</th>
                       <th scope="col">Enter Section</th>
                       <th scope="col">Exit Section</th>
@@ -161,7 +132,6 @@
                 <table id="carTable1" class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" style="text-align: center;">Event</th>
                       <th scope="col">Car type</th>
                       <th scope="col">Enter Section</th>
                       <th scope="col">Exit Section</th>
@@ -184,7 +154,6 @@
                 <table id="carTable1" class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" style="text-align: center;">Event</th>
                       <th scope="col">Car type</th>
                       <th scope="col">Enter Section</th>
                       <th scope="col">Exit Section</th>
@@ -207,7 +176,6 @@
                 <table id="carTable1" class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" style="text-align: center;">Event</th>
                       <th scope="col">Car type</th>
                       <th scope="col">Enter Section</th>
                       <th scope="col">Exit Section</th>
@@ -229,7 +197,6 @@
                 <table id="carTable1" class="table table-bordered table-striped mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" style="text-align: center;">Event</th>
                       <th scope="col">Car type</th>
                       <th scope="col">Enter Section</th>
                       <th scope="col">Exit Section</th>
@@ -248,28 +215,38 @@
               </div>
             </div>
           </div>
-      </div>
+        </div>
     </div>
-    </main>
   </div>
-
-  <!-- </div> -->
-  <!-- </div> -->
-  <!-- plugins:js -->
-  <script src="./vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <script src="./vendors/chartjs/Chart.min.js"></script>
-  <script src="./vendors/jvectormap/jquery-jvectormap.min.js"></script>
-  <script src="./vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
-  <script src="./js/material.js"></script>
-  <script src="./js/misc.js"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="./js/dashboard.js"></script>
-  <!-- End custom js for this page-->
+  </main>
+</div>
+<script>
+  function show_tables() {
+    var x = document.getElementById("tablesDiv");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+<!-- </div> -->
+<!-- </div> -->
+<!-- plugins:js -->
+<script src="./vendors/js/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<script src="./vendors/chartjs/Chart.min.js"></script>
+<script src="./vendors/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="./vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="./js/material.js"></script>
+<script src="./js/misc.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="./js/dashboard.js"></script>
+<!-- End custom js for this page-->
 </body>
 
 </html>

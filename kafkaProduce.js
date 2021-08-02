@@ -1,5 +1,8 @@
 // https://www.cloudkarafka.com/ הפעלת קפקא במסגרת ספק זה
 const uuid = require("uuid");
+// const bigml = require("./bigML");
+// const forRedis = require("./RedisForSender");
+// const forMongo = require("./MongoDBSender");
 const Kafka = require("node-rdkafka");
 const simulate = require("./simulator");
 const kafkaConf = {
@@ -17,18 +20,19 @@ const topic = `${prefix}new`; // send to this topic
 const producer = new Kafka.Producer(kafkaConf);
 const genMessage = m => new Buffer.alloc(m.length, m);
 
-const bigml = require("./bigML");
 
 producer.on("ready", function (arg) {
   console.log(`producer Ariel is ready.`);
   simulate.sim(publish)
 });
-
 producer.connect();
 //publish is a name can be any name...
 publish = function (msg) {
   m = JSON.stringify(msg);
-  console.log(m)
+  // forRedis.addToRedis( m);
+  // forMongo.addToMongoDB( m);
+  // bigml.myPrediction(msg)
+
   producer.produce(topic, -1, genMessage(m), uuid.v4());  //Send to KAFKA
   //producer.disconnect();   
 }
