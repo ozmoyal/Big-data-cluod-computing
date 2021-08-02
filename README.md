@@ -10,7 +10,7 @@ In this project we designed a system that gets a stream of data stores and proce
 
 The goal of this project is to design a dashboard analitic system in big data perception which uses NoSQL Databases, tools from Hadoop Ecosystem and microservices in typical architecture and implementing infrastructure challenges.
 
-**Functional requirements**
+## Functional requirements
 
  - the system will allow managing toll road sections. the road have 5 sections 
  - In any moment the number of cars in any section is shown
@@ -21,7 +21,7 @@ The goal of this project is to design a dashboard analitic system in big data pe
  - there is a confusion matrix which show if the prediction model is accurate and updat with every car that enter the road
 
 
-**Functional requirements**
+## Non-Functional requirements
  - simulator will produce massages about cars that captured driving in a particular section
  - the system is designed in micro-services approach
  - the general design pattern is based on lambda architecture
