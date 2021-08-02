@@ -31,7 +31,7 @@ The goal of this project is to design a dashboard analitic system in big data pe
  - the system is using distributed event streaming platform Kafka from Hadoop family (https://www.cloudkarafka.com/)
  - for the predication model we used BigML.com
  
- 
+ <br></br>
  ![127867905-de2e4fe7-0dcb-4d45-92e8-a20a942ab508](https://user-images.githubusercontent.com/57761478/127868793-88ffa9d7-fed7-4d66-a2d3-8f5d50f836f4.png)
 
  
