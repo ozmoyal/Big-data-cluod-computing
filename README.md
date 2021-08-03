@@ -25,7 +25,7 @@ The goal of this project is to design a dashboard analitic system in big data pe
  - simulator will produce massages about cars that captured driving in a particular section
  - the system is designed in micro-services approach
  - the general design pattern is based on lambda architecture
- - the code in the systems server wil be MVC based
+ - the code in the systems server is MVC based
  - the base for the application and the view is Node.js and suitable extention (Express.js etc.)
  - the system is using 2 NoSQL based databases: Redis and MongoDB - the first will save updated Ad hoc data that available for rapid queries and the second for processed and long-term data
  - the system is using distributed event streaming platform Kafka from Hadoop family (https://www.cloudkarafka.com/)
