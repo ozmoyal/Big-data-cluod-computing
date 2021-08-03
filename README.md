@@ -1,4 +1,4 @@
-#### :man_technologist: This project made by  [@yonatan555](https://github.com/yonatan555)  [@ozmoyal](https://github.com/ozmoyal) [@meirozenfeld](https://github.com/meirozenfeld)
+#### :man_technologist: This project made by  [@yonatan555](https://github.com/yonatan555) [@meirozenfeld](https://github.com/meirozenfeld) [@ozmoyal](https://github.com/ozmoyal)
 
 # Welcome to our Big-data-cloud project!
 In this project we designed a system that gets a stream of data stores and process it in typical architectures templates and uses common big data infrastructure for analyze in rapid and adaptive manner.
